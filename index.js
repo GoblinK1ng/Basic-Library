@@ -1,6 +1,7 @@
 const myLibrary = [];
 
 const mainIndex = document.querySelector(".main-container");
+const header = document.querySelector(".header");
 
 function Book(title, author, pages, read){
     this.id = crypto.randomUUID();
@@ -60,7 +61,22 @@ function displayArray(){
 const newBookButton = document.querySelector("#new-book");
 
 newBookButton.addEventListener("click", () =>{
-    console.log("HI")
+
+    const form = document.createElement("form")
+    for (let i = 0; i < 4; i ++){
+        const input = document.createElement("input");
+        input.type = "text";
+        input.classList = "input"+i;
+
+        form.appendChild(input);
+    }
+    
+    const submit = document.createElement("button")
+    submit.type = "submit";
+    form.appendChild(submit);
+    
+    form.appendChild
+    header.appendChild(form);
 })
 
 
