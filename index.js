@@ -57,6 +57,13 @@ function displayArray(){
 }
 
 
+const newBookButton = document.querySelector("#new-book");
+
+newBookButton.addEventListener("click", () =>{
+    console.log("HI")
+})
+
+
 
 displayArray();
 
