@@ -22,10 +22,19 @@ console.table(myLibrary);
 function displayArray(){
     for (let i = 0; i < myLibrary.length; i++){
         const card = document.createElement("div");
+        card.classList.add("card");
         card.textContent = myLibrary[i].title;
         mainIndex.appendChild(card);
         console.log("i")
     }
+    
 }
 
+
+
 displayArray();
+
+/* TEMP STUFF
+const cards = document.querySelectorAll(".card");
+
+*/
