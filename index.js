@@ -2,20 +2,21 @@ const myLibrary = [];
 
 const mainIndex = document.querySelector(".main-container");
 
-function Book(title, author, pages){
+function Book(title, author, pages, read){
     this.id = crypto.randomUUID();
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.read = read;
 }
 
-function addBookToLibrary(title, author, pages){
-    myLibrary.push(new Book(title, author, pages));
+function addBookToLibrary(title, author, pages, read){
+    myLibrary.push(new Book(title, author, pages, read));
 }
 
-addBookToLibrary("Joe the Terrible","Lingus", 300);
-addBookToLibrary("Liza Shmeeza","Bingus", 150);
-addBookToLibrary("Zoey to Zackery","Dingus", 227);
+addBookToLibrary("Joe the Terrible","Lingus", 300, "yes");
+addBookToLibrary("Liza Shmeeza","Bingus", 150, "no");
+addBookToLibrary("Zoey to Zackery","Dingus", 227, "yes");
 
 console.table(myLibrary);
 
@@ -35,17 +36,22 @@ function displayArray(){
 
         const pagesBook = document.createElement("div");
         pagesBook.textContent = myLibrary[i].pages;
+
+        const readBook = document.createElement("div");
+        readBook.textContent = myLibrary[i].read;
         
         card.appendChild(titleBook);
         card.appendChild(authorBook);
         card.appendChild(pagesBook);
+        card.appendChild(readBook);
+
 
         if (myLibrary[i].pages > 200){
-            card.style.width = myLibrary[i].pages*0.8+"px";
+            card.style.width = myLibrary[i].pages*0.6+"px";
         }
         
         mainIndex.appendChild(card);
-        console.log("i")
+
     }
     
 }
