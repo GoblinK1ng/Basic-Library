@@ -39,6 +39,10 @@ function displayArray(){
         card.appendChild(titleBook);
         card.appendChild(authorBook);
         card.appendChild(pagesBook);
+
+        if (myLibrary[i].pages > 200){
+            card.style.width = myLibrary[i].pages*0.8+"px";
+        }
         
         mainIndex.appendChild(card);
         console.log("i")
