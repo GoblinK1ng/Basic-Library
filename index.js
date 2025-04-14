@@ -73,11 +73,31 @@ newBookButton.addEventListener("click", () =>{
     
     const submit = document.createElement("button")
     submit.type = "submit";
+    submit.textContent = "Submit";
+
+
+    submit.addEventListener("click", (event) =>{
+        event.preventDefault();
+        console.log("IT WORKED");
+
+        const inputs = document.querySelectorAll("form input");
+
+        addBookToLibrary(inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value);
+        
+        while (mainIndex.lastChild){
+            mainIndex.removeChild(mainIndex.lastChild);
+        }
+        displayArray();
+    });
+
+
     form.appendChild(submit);
-    
-    form.appendChild
     header.appendChild(form);
+
+    
 })
+
+
 
 
 
