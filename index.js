@@ -27,8 +27,19 @@ function displayArray(){
         card.classList.add("card");
         card.style.backgroundColor = "rgb("+Math.random()*255+","+Math.random()*255+","+Math.random()*255+")";
 
+        const titleBook = document.createElement("div");
+        titleBook.textContent = myLibrary[i].title;
 
-        card.textContent = myLibrary[i].title + " " + myLibrary[i].author + " " + myLibrary[i].pages;
+        const authorBook = document.createElement("div");
+        authorBook.textContent = myLibrary[i].author;
+
+        const pagesBook = document.createElement("div");
+        pagesBook.textContent = myLibrary[i].pages;
+        
+        card.appendChild(titleBook);
+        card.appendChild(authorBook);
+        card.appendChild(pagesBook);
+        
         mainIndex.appendChild(card);
         console.log("i")
     }
