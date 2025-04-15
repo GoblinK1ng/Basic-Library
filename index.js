@@ -66,6 +66,7 @@ newBookButton.addEventListener("click", () =>{
     for (let i = 0; i < 4; i ++){
         const input = document.createElement("input");
         input.type = "text";
+        input.required = true;
         input.classList = "input"+i;
 
         form.appendChild(input);
@@ -74,8 +75,7 @@ newBookButton.addEventListener("click", () =>{
     const submit = document.createElement("button")
     submit.type = "submit";
     submit.textContent = "Submit";
-
-
+    
     submit.addEventListener("click", (event) =>{
         event.preventDefault();
         console.log("IT WORKED");
@@ -86,6 +86,10 @@ newBookButton.addEventListener("click", () =>{
         
         while (mainIndex.lastChild){
             mainIndex.removeChild(mainIndex.lastChild);
+        }
+
+        while (header.childElementCount > 1){
+            header.removeChild(header.lastChild);
         }
         displayArray();
     });
