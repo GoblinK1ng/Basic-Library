@@ -25,10 +25,16 @@ body{
 
 .main-container{
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   grid-template-rows: repeat(3, 1fr);
   
+  background-color: burlywood;
   gap: 20px;
+  padding: 20px;
+
+  justify-items:  center;
+  
+
 }
 
 form{

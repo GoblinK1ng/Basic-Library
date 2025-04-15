@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 const mainIndex = document.querySelector(".main-container");
 const header = document.querySelector(".header");
@@ -28,6 +28,7 @@ function displayArray(){
         
         card.classList.add("card");
         card.style.backgroundColor = "rgb("+Math.random()*255+","+Math.random()*255+","+Math.random()*255+")";
+        card.id = myLibrary[i].id;
 
         const titleBook = document.createElement("div");
         titleBook.textContent = myLibrary[i].title;
@@ -40,11 +41,30 @@ function displayArray(){
 
         const readBook = document.createElement("div");
         readBook.textContent = myLibrary[i].read;
+
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Remove Book";
+        deleteButton.id = "deleteButton"
+
+        deleteButton.addEventListener("click", () =>{
+            console.log(deleteButton.parentElement.id);
+            
+            myLibrary = myLibrary.filter((book) =>
+                book.id !== deleteButton.parentElement.id
+            )
+
+            
+            mainIndex.removeChild(deleteButton.parentElement);
+
+            console.table(myLibrary);
+            
+        })
         
         card.appendChild(titleBook);
         card.appendChild(authorBook);
         card.appendChild(pagesBook);
         card.appendChild(readBook);
+        card.appendChild(deleteButton);
 
 
         if (myLibrary[i].pages > 200){
@@ -100,7 +120,6 @@ newBookButton.addEventListener("click", () =>{
 
     
 })
-
 
 
 
