@@ -59,12 +59,34 @@ function displayArray(){
             console.table(myLibrary);
             
         })
+
+        const readStatusButton = document.createElement("button");
+        readStatusButton.textContent = "ReadStatus";
+        readStatusButton.id = "read-status-button";
+
+        readStatusButton.addEventListener("click", () =>{
+            for (const book in myLibrary){
+                console.log(myLibrary[book].id);
+                if (readStatusButton.parentElement.id === myLibrary[book].id){
+                    if (myLibrary[book].read === "yes"){
+                        myLibrary[book].read = "no";
+                        readBook.textContent = "no";
+                    }
+                    else{
+                        myLibrary[book].read = "yes";
+                        readBook.textContent = "yes";
+                    }
+                }
+            }
+            
+        })
         
         card.appendChild(titleBook);
         card.appendChild(authorBook);
         card.appendChild(pagesBook);
         card.appendChild(readBook);
         card.appendChild(deleteButton);
+        card.appendChild(readStatusButton);
 
 
         if (myLibrary[i].pages > 200){
