@@ -1,8 +1,11 @@
+// keeps the books stored in an array
 let myLibrary = [];
 
+// get html elements
 const mainIndex = document.querySelector(".main-container");
 const header = document.querySelector(".header");
 
+// creates a new class
 function Book(title, author, pages, read){
     this.id = crypto.randomUUID();
     this.title = title;
@@ -11,16 +14,19 @@ function Book(title, author, pages, read){
     this.read = read;
 }
 
+// adds book into library
 function addBookToLibrary(title, author, pages, read){
     myLibrary.push(new Book(title, author, pages, read));
 }
 
+// placeholder info
 addBookToLibrary("Joe the Terrible","Lingus", 300, "yes");
 addBookToLibrary("Liza Shmeeza","Bingus", 150, "no");
 addBookToLibrary("Zoey to Zackery","Dingus", 227, "yes");
 
 console.table(myLibrary);
 
+// displays the contents of library onto html
 function displayArray(){
     for (let i = 0; i < myLibrary.length; i++){
 
@@ -99,9 +105,10 @@ function displayArray(){
     
 }
 
-
+// gets the new book button
 const newBookButton = document.querySelector("#new-book");
 
+// adds an event listener to open a form to create new book on click
 newBookButton.addEventListener("click", () =>{
 
     const form = document.createElement("form")
@@ -119,21 +126,27 @@ newBookButton.addEventListener("click", () =>{
     submit.textContent = "Submit";
     
     submit.addEventListener("click", (event) =>{
+        
         event.preventDefault();
         console.log("IT WORKED");
 
         const inputs = document.querySelectorAll("form input");
-
-        addBookToLibrary(inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value);
+        inputs[2].type = "number";
         
-        while (mainIndex.lastChild){
-            mainIndex.removeChild(mainIndex.lastChild);
-        }
+        if (form.checkValidity()) {
+            addBookToLibrary(inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value);
+            mainIndex.innerHTML = "";
 
-        while (header.childElementCount > 1){
-            header.removeChild(header.lastChild);
+            while (header.childElementCount > 1){
+                header.removeChild(header.lastChild);
+            
+            }
+        
+            displayArray();
         }
-        displayArray();
+        
+
+        
     });
 
 
